@@ -23,7 +23,7 @@ function Login() {
         { withCredentials: true }
       );
       dispatch(addUser(response.data));
-      return navigate("/profile");
+      return navigate("/");
     } catch (err) {
       setError(err.response.data);
       console.error(err);
