@@ -3,11 +3,14 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [emailId, setEmailId] = useState("tilak@gmail.com");
   const [password, setPassword] = useState("Tilak@1234");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   async function handleLogin() {
     try {
@@ -20,7 +23,9 @@ function Login() {
         { withCredentials: true }
       );
       dispatch(addUser(response.data));
+      return navigate("/profile");
     } catch (err) {
+      setError(err.response.data);
       console.error(err);
     }
   }
@@ -55,6 +60,7 @@ function Login() {
               value={password}
             />
           </label>
+          <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center my-2">
             <button className="btn btn-primary" onClick={handleLogin}>
               Login
