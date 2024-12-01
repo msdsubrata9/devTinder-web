@@ -21,11 +21,7 @@ function Feed() {
   useEffect(() => {
     getFeed();
   }, []);
-  return (
-    <div>
-      <UserCard user={feedData[0]} />
-    </div>
-  );
+  return <div>{feedData && <UserCard user={feedData[0]} />}</div>;
 }
 
 export default Feed;
