@@ -21,6 +21,9 @@ function Feed() {
   useEffect(() => {
     getFeed();
   }, []);
+  if (!feedData) return;
+  if (feedData.length <= 0)
+    return <h1 className="font-extrabold text-5xl">Noone found</h1>;
   return <div>{feedData && <UserCard user={feedData[0]} />}</div>;
 }
 
