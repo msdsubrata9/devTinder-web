@@ -20,6 +20,12 @@ function Connections() {
   useEffect(() => {
     fetchConnections();
   }, []);
+
+  if (!connections) return;
+
+  if (connections.length === 0)
+    return <h1 className="font-extrabold text-5xl">No connections found</h1>;
+
   return (
     <div className="flex flex-col items-center py-5">
       <h1 className="font-extrabold text-5xl">Connections</h1>
