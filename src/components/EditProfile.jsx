@@ -101,7 +101,7 @@ function EditProfile({ user }) {
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                 >
-                  <option value="" disabled>
+                  <option value="" enable>
                     Select Gender
                   </option>
                   <option value="male">male</option>
